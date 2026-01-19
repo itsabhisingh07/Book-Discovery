@@ -29,3 +29,37 @@ Book-Discovery/
 ├── .gitignore              # Specifies files to ignore (like large .pkl files)
 └── README.md               # Project documentation
 ```
+
+## Installation & Setup
+Since the model files are too large for GitHub, you must generate them locally first.
+
+1. Clone the Repository
+Bash
+
+git clone [https://github.com/YOUR_USERNAME/Book-Discovery.git](https://github.com/YOUR_USERNAME/Book-Discovery.git)
+cd Book-Discovery
+2. Install Dependencies
+Bash
+
+pip install -r requirements.txt
+3. Generate Model Files ⚠️ (Crucial Step)
+The books.pkl and similarity.pkl files are not included in this repo because they are large. You must generate them:
+
+Open book_recommender.ipynb in Jupyter Notebook or VS Code.
+
+Run all the cells to process the data and train the model.
+
+This will create books.pkl and similarity.pkl in your project folder.
+
+4. Run the Application
+Bash
+
+python app.py
+Open your browser and go to: http://127.0.0.1:5000/
+
+ How It Works
+Data Cleaning: The system cleans raw book data, merging Title, Author, Genres, and Description into a single "Tags" column.
+
+Vectorization: It uses CountVectorizer to convert these text tags into numerical vectors.
+
+Similarity Calculation: It calculates the Cosine Similarity between these vectors to find books that are mathematically "closest" to each other in terms of content.
