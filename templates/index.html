@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>Book Discovery</h1>
+    </nav>
+
+    <div class="search-container">
+        <form action="/recommend" method="post">
+            <input type="text" name="user_input" placeholder="Enter a book name (e.g., Harry Potter)..." required>
+            <button type="submit" class="search-btn">Search Book</button>
+        </form>
+        {% if error %}
+            <p class="error-msg">{{ error }}</p>
+        {% endif %}
+    </div>
+    {% if not found and not error %}
+    <div class="welcome-section">
+        <div class="hero-text">
+            <h2>Discover Your Next Favorite Read 📖</h2>
+            <p>Explore top-rated books, uncover hidden gems, and find similar reads in seconds.</p>
+        </div>
+
+        <h3>✨ Featured Picks</h3>
+        <div class="grid">
+            {% for i in default_books %}
+            <a href="/recommend?book_name={{ i[0] }}">
+                <div class="card">
+                    <img src="{{ i[2] }}" alt="{{ i[0] }}">
+                    <h4>{{ i[0] }}</h4>
+                    <p>{{ i[1] }}</p>
+                    <span>⭐ {{ i[3] }}</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if found %}
+    <div class="main-content">
+        
+        <div class="book-card-left">
+            <img src="{{ book.image }}" alt="Book Cover">
+            <div class="book-stats">
+                <h2>{{ book.title }}</h2>
+                <p><strong>Author:</strong> {{ book.author }}</p>
+                <p><strong>Published:</strong> {{ book.year }}</p>
+                <p class="rating">⭐ {{ book.rating }} / 5</p>
+                <p class="votes">({{ book.votes }} reviews)</p>
+            </div>
+        </div>
+
+        <div class="book-desc-right">
+            <h3>Summary</h3>
+            <div class="desc-box">
+                <p>{{ book.desc }}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="reveal-section">
+        <button onclick="showRecommendations()" class="recommend-btn">
+            Suggest Similar Books
+        </button>
+    </div>
+
+    <div id="rec-grid" class="recommendations-container" style="display: none;">
+        <h3>You might also like...</h3>
+        <div class="grid">
+            {% for i in similar_books %}
+            <a href="/recommend?book_name={{ i[0] }}" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <img src="{{ i[2] }}">
+                    <h4>{{ i[0] }}</h4>
+                    <p>{{ i[1] }}</p>
+                    <span>⭐ {{ i[3] }}</span>
+                </div>
+            </a>
+            {% endfor %}
+ </div>
+    </div>
+    {% endif %}  <script>
+        function showRecommendations() {
+            var x = document.getElementById("rec-grid");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                x.scrollIntoView({behavior: "smooth"});
+            }
+        }
+    </script>
+
+</body>
+</html>
