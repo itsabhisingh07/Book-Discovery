@@ -16,3 +16,16 @@ A machine learning-based web application that helps users discover their next fa
 * **Data Processing:** NLTK / Regex (for text cleaning)
 
 ##  Project Structure
+```text
+Book-Discovery/
+│
+├── app.py                  # Main Flask application
+├── requirements.txt        # List of dependencies
+├── static/
+│   └── style.css           # Styling for the web app
+├── templates/
+│   └── index.html          # HTML template
+├── book_recommender.ipynb  # Jupyter Notebook for data cleaning & model training
+├── .gitignore              # Specifies files to ignore (like large .pkl files)
+└── README.md               # Project documentation
+```
