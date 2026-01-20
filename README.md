@@ -16,8 +16,8 @@ A machine learning-based web application that helps users discover their next fa
 * **Data Processing:** NLTK / Regex (for text cleaning)
 
 ##  Demo
-  ![Result Page](Book_home.png)
-  ![Result Page](Book_result.png)
+  |Home page| ![Home Page](Book_home.png)|
+  |Result page| ![Result Page](Book_result.png)|
 
 
 ##  Project Structure
