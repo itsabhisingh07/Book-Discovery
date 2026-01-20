@@ -56,10 +56,3 @@ Bash
 
 python app.py
 Open your browser and go to: http://127.0.0.1:5000/
-
- How It Works
-Data Cleaning: The system cleans raw book data, merging Title, Author, Genres, and Description into a single "Tags" column.
-
-Vectorization: It uses CountVectorizer to convert these text tags into numerical vectors.
-
-Similarity Calculation: It calculates the Cosine Similarity between these vectors to find books that are mathematically "closest" to each other in terms of content.
