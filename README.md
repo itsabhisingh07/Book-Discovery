@@ -15,6 +15,11 @@ A machine learning-based web application that helps users discover their next fa
 * **Machine Learning:** Scikit-Learn (CountVectorizer, Cosine Similarity), Pandas, NumPy
 * **Data Processing:** NLTK / Regex (for text cleaning)
 
+##  Demo
+  ![Result Page](Book_home.png)
+  ![Result Page](Book_result.png)
+
+
 ##  Project Structure
 ```text
 Book-Discovery/
